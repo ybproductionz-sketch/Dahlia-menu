@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dahlia • Luxury Concierge</title>
-  <meta name="description" content="Dahlia is a luxury concierge landing page with rose-gold styling, service cards, and a simple inquiry form." />
+  <meta name="description" content="Dahlia is a luxury concierge landing page with rose-gold styling, service cards, and an email inquiry form." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap');
 
@@ -120,6 +120,7 @@
       border: 0;
       cursor: pointer;
       transition: 0.25s ease;
+      text-align: center;
     }
 
     .button.secondary {
@@ -193,10 +194,7 @@
     }
 
     .service-row:last-child { border-bottom: 0; }
-
-    .service-row:hover {
-      background: rgba(255, 102, 153, 0.08);
-    }
+    .service-row:hover { background: rgba(255, 102, 153, 0.08); }
 
     .service-row strong {
       display: block;
@@ -335,17 +333,17 @@
 
       <section id="inquiry" class="form-wrap">
         <h2>Client Inquiry</h2>
-        <p>Demo form. It shows a confirmation on submit. Connect it to Formspree, Netlify Forms, EmailJS, or a backend when ready.</p>
-        <form onsubmit="submitDemo(event)">
+        <p>Complete the form below. Submitting opens a ready-to-send email to the Dahlia inbox.</p>
+        <form id="inquiryForm" onsubmit="submitInquiry(event)">
           <label>Name<input type="text" name="name" placeholder="Your name" required /></label>
           <label>Email<input type="email" name="email" placeholder="you@example.com" required /></label>
           <label>Interest<select name="interest" required><option value="">Select one</option><option>Consultation</option><option>Event Styling</option><option>Private Itinerary</option><option>Other</option></select></label>
           <label>Preferred Date<input type="date" name="date" /></label>
           <label class="full">Details<textarea name="details" placeholder="Share the city, timing, occasion, and notes."></textarea></label>
-          <button class="button full" type="submit">Submit Inquiry</button>
+          <button class="button full" type="submit">Email Inquiry</button>
         </form>
-        <div id="messageBox">Inquiry staged. The design works; now connect the form to a real inbox.</div>
-        <p class="notice">Production note: replace the demo action with your preferred form service before launch.</p>
+        <div id="messageBox">Your email app should open with the inquiry ready to send. Review it, then press send.</div>
+        <p class="notice">Direct inbox: ybproductionz@gmail.com</p>
       </section>
 
       <footer>
@@ -356,10 +354,28 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    function submitDemo(event) {
+
+    function submitInquiry(event) {
       event.preventDefault();
+      const form = event.target;
+      const data = new FormData(form);
+      const name = data.get('name') || '';
+      const email = data.get('email') || '';
+      const interest = data.get('interest') || '';
+      const date = data.get('date') || 'Flexible';
+      const details = data.get('details') || '';
+
+      const subject = encodeURIComponent('Dahlia Inquiry - ' + interest);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Interest: ' + interest + '\n' +
+        'Preferred Date: ' + date + '\n\n' +
+        'Details:\n' + details
+      );
+
+      window.location.href = 'mailto:ybproductionz@gmail.com?subject=' + subject + '&body=' + body;
       document.getElementById('messageBox').style.display = 'block';
-      event.target.reset();
     }
   </script>
 </body>
