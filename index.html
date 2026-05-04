@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dahlia • Luxury Concierge</title>
-  <meta name="description" content="Dahlia is a luxury concierge landing page with rose-gold styling, service cards, and an email inquiry form." />
+  <meta name="description" content="Dahlia is a private luxury concierge for curated planning, elegant event styling, and polished client experiences." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap');
 
@@ -121,6 +121,8 @@
       cursor: pointer;
       transition: 0.25s ease;
       text-align: center;
+      font-family: inherit;
+      font-size: 1rem;
     }
 
     .button.secondary {
@@ -215,6 +217,15 @@
       align-self: center;
     }
 
+    .standards {
+      margin-top: 48px;
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(232, 201, 160, 0.16);
+      text-align: center;
+    }
+
     .form-wrap {
       margin-top: 50px;
       padding: 28px;
@@ -273,6 +284,21 @@
       color: var(--gold-light);
     }
 
+    .contact-line {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .contact-line a {
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 153, 204, 0.45);
+    }
+
     footer {
       margin-top: 46px;
       padding-top: 22px;
@@ -295,34 +321,34 @@
   <div class="shell">
     <main>
       <header>
-        <div class="eyebrow">Private luxury presentation</div>
+        <div class="eyebrow">Private luxury concierge</div>
         <h1>DAHLIA</h1>
-        <p class="tagline">A rose-gold digital menu for refined events, boutique experiences, luxury styling, and polished client inquiries.</p>
+        <p class="tagline">A rose-gold digital salon for curated planning, elegant styling, and polished private inquiries.</p>
         <div class="actions">
-          <a class="button" href="#inquiry">Start Inquiry</a>
-          <a class="button secondary" href="#offerings">View Offerings</a>
+          <a class="button" href="#inquiry">Request Availability</a>
+          <a class="button secondary" href="mailto:dahliadeity0@gmail.com?subject=Dahlia%20Direct%20Inquiry">Email Directly</a>
         </div>
       </header>
 
       <section class="grid" aria-label="Brand highlights">
         <article class="card">
-          <h3>Elegant Design</h3>
-          <p>Dark luxury styling, rose accents, warm gold typography, and a polished editorial feel.</p>
+          <h3>Curated Planning</h3>
+          <p>Thoughtful coordination for dinners, celebrations, intimate events, and elevated private experiences.</p>
         </article>
         <article class="card">
-          <h3>Mobile Ready</h3>
-          <p>The layout adapts cleanly for phones, tablets, laptops, and desktop screens.</p>
+          <h3>Luxury Styling</h3>
+          <p>Atmosphere, timing, mood, presentation, and visual direction shaped with a refined eye.</p>
         </article>
         <article class="card">
-          <h3>Fast to Customize</h3>
-          <p>All structure lives in one HTML file so the site can be edited quickly without a complex setup.</p>
+          <h3>Private Communication</h3>
+          <p>Inquiry details are handled clearly and respectfully through a dedicated Dahlia inbox.</p>
         </article>
       </section>
 
       <section id="offerings">
         <div class="section-title">
           <h2>Offerings</h2>
-          <p>Use these rows for your final service names, booking types, product menu, or private event options.</p>
+          <p>Select the experience closest to your request. Custom arrangements can be described in the inquiry form.</p>
         </div>
         <div class="service-list">
           <div class="service-row"><div><strong>Consultation</strong><span>Initial planning, preference notes, styling direction, and scheduling details.</span></div><div class="price">From $75</div></div>
@@ -331,23 +357,32 @@
         </div>
       </section>
 
+      <section class="standards">
+        <h2>House Standard</h2>
+        <p>Every inquiry is reviewed for timing, location, tone, and fit before confirmation. Clear details get the fastest response.</p>
+      </section>
+
       <section id="inquiry" class="form-wrap">
         <h2>Client Inquiry</h2>
-        <p>Complete the form below. Submitting opens a ready-to-send email to the Dahlia inbox.</p>
+        <p>Complete the form below. Submitting opens a pre-filled email addressed to the Dahlia inbox.</p>
         <form id="inquiryForm" onsubmit="submitInquiry(event)">
           <label>Name<input type="text" name="name" placeholder="Your name" required /></label>
           <label>Email<input type="email" name="email" placeholder="you@example.com" required /></label>
-          <label>Interest<select name="interest" required><option value="">Select one</option><option>Consultation</option><option>Event Styling</option><option>Private Itinerary</option><option>Other</option></select></label>
+          <label>Interest<select name="interest" required><option value="">Select one</option><option>Consultation</option><option>Event Styling</option><option>Private Itinerary</option><option>Custom Request</option></select></label>
           <label>Preferred Date<input type="date" name="date" /></label>
-          <label class="full">Details<textarea name="details" placeholder="Share the city, timing, occasion, and notes."></textarea></label>
-          <button class="button full" type="submit">Email Inquiry</button>
+          <label class="full">Details<textarea name="details" placeholder="Share the city, timing, occasion, and any important notes."></textarea></label>
+          <button class="button full" type="submit">Prepare Email Inquiry</button>
         </form>
-        <div id="messageBox">Your email app should open with the inquiry ready to send. Review it, then press send.</div>
-        <p class="notice">Direct inbox: dahliadeity0@gmail.com</p>
+        <div id="messageBox">Your email app has been opened with the inquiry ready to send.</div>
+        <div class="contact-line">
+          <span>Direct inbox:</span>
+          <a href="mailto:dahliadeity0@gmail.com?subject=Dahlia%20Direct%20Inquiry">dahliadeity0@gmail.com</a>
+        </div>
+        <p class="notice">After the email opens, review the details and press send from your email app.</p>
       </section>
 
       <footer>
-        <p>© <span id="year"></span> Dahlia. Luxury landing page template.</p>
+        <p>© <span id="year"></span> Dahlia. Private luxury concierge.</p>
       </footer>
     </main>
   </div>
